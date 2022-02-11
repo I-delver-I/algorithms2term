@@ -1,0 +1,14 @@
+C:\Users\Дима\Desktop\Studying\Labs\algorithms2term\C-sharp\Labwork 1\bin\Debug\netcoreapp3.1\Labwork 1.exe
+C:\Users\Дима\Desktop\Studying\Labs\algorithms2term\C-sharp\Labwork 1\bin\Debug\netcoreapp3.1\Labwork 1.deps.json
+C:\Users\Дима\Desktop\Studying\Labs\algorithms2term\C-sharp\Labwork 1\bin\Debug\netcoreapp3.1\Labwork 1.runtimeconfig.json
+C:\Users\Дима\Desktop\Studying\Labs\algorithms2term\C-sharp\Labwork 1\bin\Debug\netcoreapp3.1\Labwork 1.runtimeconfig.dev.json
+C:\Users\Дима\Desktop\Studying\Labs\algorithms2term\C-sharp\Labwork 1\bin\Debug\netcoreapp3.1\Labwork 1.dll
+C:\Users\Дима\Desktop\Studying\Labs\algorithms2term\C-sharp\Labwork 1\bin\Debug\netcoreapp3.1\Labwork 1.pdb
+C:\Users\Дима\Desktop\Studying\Labs\algorithms2term\C-sharp\Labwork 1\obj\Debug\netcoreapp3.1\Labwork 1.csproj.AssemblyReference.cache
+C:\Users\Дима\Desktop\Studying\Labs\algorithms2term\C-sharp\Labwork 1\obj\Debug\netcoreapp3.1\Labwork 1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Дима\Desktop\Studying\Labs\algorithms2term\C-sharp\Labwork 1\obj\Debug\netcoreapp3.1\Labwork 1.AssemblyInfoInputs.cache
+C:\Users\Дима\Desktop\Studying\Labs\algorithms2term\C-sharp\Labwork 1\obj\Debug\netcoreapp3.1\Labwork 1.AssemblyInfo.cs
+C:\Users\Дима\Desktop\Studying\Labs\algorithms2term\C-sharp\Labwork 1\obj\Debug\netcoreapp3.1\Labwork 1.csproj.CoreCompileInputs.cache
+C:\Users\Дима\Desktop\Studying\Labs\algorithms2term\C-sharp\Labwork 1\obj\Debug\netcoreapp3.1\Labwork 1.dll
+C:\Users\Дима\Desktop\Studying\Labs\algorithms2term\C-sharp\Labwork 1\obj\Debug\netcoreapp3.1\Labwork 1.pdb
+C:\Users\Дима\Desktop\Studying\Labs\algorithms2term\C-sharp\Labwork 1\obj\Debug\netcoreapp3.1\Labwork 1.genruntimeconfig.cache
