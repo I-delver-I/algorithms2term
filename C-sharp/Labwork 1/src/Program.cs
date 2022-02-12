@@ -8,7 +8,7 @@ namespace Labwork_1
     {
         static void Main(string[] args)
         {
-            int[] seq = GenerateRandomNumbersInRange();
+            int[] seq = ChoosingThePrimSeq();
             seq = CombSort(seq);
         }
 
@@ -18,11 +18,13 @@ namespace Labwork_1
             timer.Start();
             long comparison = 0, swaps = 0;
             int temp = 0;
+            bool isReady = true;
 
             if (order is Order.Ascending)
             {
-                for (int y = 0; y < seq.Length - 1; y++)
+                for (int y = 0; y < seq.Length - 1 && isReady; y++)
                 {
+                    isReady = false;
                     for (int i = 1; i < seq.Length; i++)
                     {
                         if (seq[i - 1] > seq[i])
@@ -31,6 +33,7 @@ namespace Labwork_1
                             seq[i] = seq[i - 1];
                             seq[i - 1] = temp;
                             swaps++;
+                            isReady = true;
                         }
                         comparison++;
                     }
@@ -38,8 +41,9 @@ namespace Labwork_1
             }
             else if (order is Order.Descending)
             {
-                for (int y = 0; y < seq.Length - 1; y++)
+                for (int y = 0; y < seq.Length - 1 && isReady; y++)
                 {
+                    isReady = false;
                     for (int i = 1; i < seq.Length; i++)
                     {
                         if (seq[i - 1] < seq[i])
@@ -48,6 +52,7 @@ namespace Labwork_1
                             seq[i] = seq[i - 1];
                             seq[i - 1] = temp;
                             swaps++;
+                            isReady = true;
                         }
                         comparison++;
                     }
@@ -67,7 +72,7 @@ namespace Labwork_1
             timer.Start();
             double factor = 1.2473309;
             int step = array.Length - 1, swaps = 0, comparisons = 0;
-
+            
             while (step >= 1)
             {
                 for (int i = 0; i + step < array.Length; i++)
@@ -79,6 +84,7 @@ namespace Labwork_1
                     }
                     comparisons++;
                 }
+
                 step = (int)(step / factor);
             }
             timer.Stop();
@@ -95,6 +101,22 @@ namespace Labwork_1
             int temp = value1;
             value1 = value2;
             value2 = temp;
+        }
+
+        public static int[] ChoosingThePrimSeq()
+        {
+            Console.Write("Enter the type of the primary sequence you want to be formed (desc, asc) or use \"rand\" by default: ");
+            string way = Console.ReadLine();
+
+            switch (way.ToLower())
+            {
+                case "desc":
+                    return GenOrderDescSeq();
+                case "asc":
+                    return GenOrderSeq();
+                default:
+                    return GenerateRandomNumbersInRange();
+            }
         }
 
         public static int[] GenerateRandomNumbersInRange()
@@ -133,6 +155,7 @@ namespace Labwork_1
             int[] seq = Enumerable.Range(1, Convert.ToInt32(Console.ReadLine())).ToArray();
             Console.WriteLine("The sequence sorted ascending:");
             PrintSeq(seq);
+            Console.Write(Environment.NewLine);
             return seq;
         }
 
