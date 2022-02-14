@@ -49,8 +49,7 @@ namespace Labwork_1
 
             timer.Stop();
             Console.WriteLine($"The new bubble-sorted sequence:\n{string.Join(" ", seq)}");
-            Console.WriteLine($"It has {comparisons} comparisons and {swaps} swaps");
-            Console.WriteLine($"It takes {timer.Elapsed} time to perform the algorithm");
+            PrintResult(comparisons, swaps, timer);
         }
 
         private static void CombSort(int[] array)
@@ -59,8 +58,8 @@ namespace Labwork_1
             timer.Start();
             double factor = 1.2473309;
             int step = array.Length - 1;
-            int swaps = 0;
-            int comparisons = 0;
+            long swaps = 0;
+            long comparisons = 0;
 
             while (step >= 1)
             {
@@ -79,8 +78,7 @@ namespace Labwork_1
 
             timer.Stop();
             Console.WriteLine($"The array sorted in the combining way is:\n{string.Join(" ", array)}");
-            Console.WriteLine($"It has {comparisons} comparisons and {swaps} swaps");
-            Console.WriteLine($"It took {timer.Elapsed} time to perform the algorithm.");
+            PrintResult(comparisons, swaps, timer);
         }
 
         private static void Swap(ref int value1, ref int value2)
@@ -88,6 +86,12 @@ namespace Labwork_1
             int temp = value1;
             value1 = value2;
             value2 = temp;
+        }
+
+        private static void PrintResult(long comparisons, long swaps, Stopwatch timer)
+        {
+            Console.WriteLine($"It has {comparisons} comparisons and {swaps} swaps");
+            Console.WriteLine($"It took {timer.Elapsed} time to perform the algorithm.");
         }
     }
 }
