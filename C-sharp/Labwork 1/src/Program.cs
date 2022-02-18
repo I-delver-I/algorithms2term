@@ -29,7 +29,7 @@ namespace Labwork_1
             numSequence.GetSequence();
             Console.WriteLine("The primary sequence is:\n" + string.Join(" ", numSequence.Sequence));
 
-            // // Define the type of the algorithm
+            // Define the type of the algorithm
             Console.WriteLine("Enter the algorithm to sort with (bubble, comb) or close program in another case:");
             algorithm.Name = Console.ReadLine();
 
@@ -39,9 +39,9 @@ namespace Labwork_1
             timer.Stop();
 
             // Result of the algorithm's activity
-            Console.WriteLine($"The new {algorithm.Name}-sorted sequence:\n{string.Join(" ", numSequence.Sequence)}");
-            Console.WriteLine($"It has {algorithm.Comparisons} comparisons and {algorithm.Swaps} swaps");
-            Console.WriteLine($"It took {timer.Elapsed} time to perform the algorithm.");
+            Console.WriteLine($"The new {algorithm.Name}-sorted sequence:\n{string.Join(" ", numSequence.Sequence)}\n" +
+            $"It has {algorithm.Comparisons} comparisons and {algorithm.Swaps} swaps\n" +
+            $"It took {timer.Elapsed} time to perform the algorithm.");
         }
     }
 }
