@@ -32,7 +32,7 @@ namespace Labwork_1
             Console.WriteLine("Enter the algorithm to sort with (bubble, comb) or close program in another case:");
             algorithm.Name = Console.ReadLine();
 
-            if (algorithm.Name != "bubble" || algorithm.Name != "comb")
+            if (algorithm.Name != "bubble" && algorithm.Name != "comb")
             {
                 throw new ArgumentException("You didn't enter the name of algorithm!");
             }
