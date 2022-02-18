@@ -4,10 +4,10 @@ namespace Labwork_1
 {
     public class SortAlgorithm
     {
-        public int Comparisons { get; set; } = 0;
+        public long Comparisons { get; set; } = 0;
 
-        public int Swaps { get; set; } = 0;
-
+        public long Swaps { get; set; } = 0;
+        
         private string _name;
         public string Name 
         {   get
