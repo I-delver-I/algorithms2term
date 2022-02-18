@@ -13,15 +13,16 @@ namespace Labwork_1
 
             // Define the length of the sequence
             Console.Write("Please, enter the length of the sequnce: ");
-            if (int.TryParse(Console.ReadLine(), out int countElements))
-            {
-                numSequence.CountElements = countElements;
-            }
-            else
-            {
-                throw new ArgumentException("You enetered not a number!");
-            }
 
+            try
+            {
+                numSequence.CountOfElements = int.Parse(Console.ReadLine());
+            }
+            catch (FormatException)
+            {
+                throw new FormatException("The entered value is not an integer");
+            }
+            
             // Define the type of the sequence
             Console.Write("Enter the type of the primary sequence you want to be formed (desc, asc) or use \"rand\" by default: ");
             numSequence.Type = Console.ReadLine();
@@ -31,11 +32,6 @@ namespace Labwork_1
             // // Define the type of the algorithm
             Console.WriteLine("Enter the algorithm to sort with (bubble, comb) or close program in another case:");
             algorithm.Name = Console.ReadLine();
-
-            if (algorithm.Name != "bubble" && algorithm.Name != "comb")
-            {
-                throw new ArgumentException("You didn't enter the name of algorithm!");
-            }
 
             // Algorithm works
             timer.Start();

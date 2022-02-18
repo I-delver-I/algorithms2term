@@ -11,7 +11,7 @@ namespace Labwork_1
 
         public int[] Sequence { get; set; }
 
-        public int CountElements { get; set; }
+        public int CountOfElements { get; set; }
 
         public void GetSequence()
         {
@@ -25,11 +25,11 @@ namespace Labwork_1
        
         private int[] GenerateRandomNumbers()
         {
-            int[] array = Enumerable.Range(1, CountElements).ToArray();
+            int[] array = Enumerable.Range(1, CountOfElements).ToArray();
 
             for (int i = 0; i < array.Length; i++)
             {
-                int j = _random.Next(CountElements);
+                int j = _random.Next(CountOfElements);
                 (array[i], array[j]) = (array[j], array[i]);
             }
 
@@ -38,14 +38,14 @@ namespace Labwork_1
 
         private int[] GenOrderDescSeq()
         {
-            int[] array = Enumerable.Range(1, CountElements).Reverse().ToArray();
+            int[] array = Enumerable.Range(1, CountOfElements).Reverse().ToArray();
 
             return array;
         }
 
         private int[] GenOrderSeq()
         {
-            int[] array = Enumerable.Range(1, CountElements).ToArray();
+            int[] array = Enumerable.Range(1, CountOfElements).ToArray();
 
             return array;
         }

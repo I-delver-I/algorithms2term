@@ -8,7 +8,22 @@ namespace Labwork_1
 
         public int Swaps { get; set; } = 0;
 
-        public string Name { get; set; }
+        private string _name;
+        public string Name 
+        {   get
+            {
+                return _name;
+            }
+            set
+            {
+                if (value != "bubble" && value != "comb")
+                {
+                    throw new ArgumentException("You didn't enter the name of algorithm!");
+                }
+
+                _name = value;
+            }
+        }
 
         public void StartAlgorithm(int[] Sequence)
         {
