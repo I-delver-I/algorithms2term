@@ -7,6 +7,8 @@ namespace Labwork_1
         public long Comparisons { get; set; } = 0;
 
         public long Swaps { get; set; } = 0;
+
+        public int GapDividings { get; set; } = 0;
         
         private string _name;
         public string Name 
@@ -42,37 +44,48 @@ namespace Labwork_1
         
         private void SortBubble(int[] seq)
         {
-            for (int y = 0; y < seq.Length - 1; y++)
+            bool swapped = true;
+
+            for (int y = 0; y < seq.Length - 1 && swapped; y++)
             {
-                for (int i = 1; i < seq.Length; i++)
+                swapped = false;
+                for (int i = 1; i < seq.Length - y; i++)
                 {
                     if (seq[i - 1] > seq[i])
                     {
-                        (seq[i - 1], seq[i]) = (seq[i], seq[i - 1]);
+                        seq[i - 1] += seq[i];
+                        seq[i] = seq[i - 1] - seq[i];
+                        seq[i - 1] = seq[i - 1] - seq[i];
+
                         Swaps++;
+                        swapped = true;
                     }
                     Comparisons++;
                 }
             }
         }
 
-        private void CombSort(int[] array)
+        private void CombSort(int[] seq)
         {
             double factor = 1.2473309;
-            int step = array.Length - 1;
+            int step = seq.Length - 1;
 
             while (step >= 1)
             {
-                for (int i = 0; i + step < array.Length; i++)
+                for (int i = 0; i + step < seq.Length; i++)
                 {
-                    if (array[i] > array[i + step])
+                    if (seq[i] > seq[i + step])
                     {
-                        (array[i], array[i + step]) = (array[i + step], array[i]);
+                        seq[i + step] += seq[i];
+                        seq[i] = seq[i + step] - seq[i];
+                        seq[i + step] = seq[i + step] - seq[i];
+
                         Swaps++;
                     }
                     Comparisons++;
                 }
                 step = (int)(step / factor);
+                GapDividings++;
             }
         }
     }

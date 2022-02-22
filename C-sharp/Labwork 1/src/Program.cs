@@ -40,7 +40,7 @@ namespace Labwork_1
 
             // Result of the algorithm's activity
             Console.WriteLine($"The new {algorithm.Name}-sorted sequence:\n{string.Join(" ", numSequence.Sequence)}\n" +
-            $"It has {algorithm.Comparisons} comparisons and {algorithm.Swaps} swaps\n" +
+            $"It has {algorithm.Comparisons} comparisons, {algorithm.Swaps} swaps and {algorithm.GapDividings} times the gap is divided by factor\n" +
             $"It took {timer.Elapsed} time to perform the algorithm.");
         }
     }
