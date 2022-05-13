@@ -26,16 +26,11 @@ namespace Labwork_2
             }
         }
 
-        /// <summary>
-        /// Gets input file path which is situated in the folder of project
-        /// </summary>
-        /// <param name="inputFileName"></param>
-        /// <returns></returns>
-        public static string GetFilePath(string inputFileName)
+        public static string GetFilePath(string fileName)
         {
             string workingDirectory = Environment.CurrentDirectory;
             
-            return @$"{workingDirectory}\{inputFileName}";
+            return @$"{workingDirectory}\{fileName}";
         }
 
         public void Clear()
