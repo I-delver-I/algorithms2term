@@ -8,7 +8,7 @@ namespace Labwork_2
         {
             int[] copyOfInputArray = new int[inputArray.Length];
             Array.Copy(inputArray, copyOfInputArray, inputArray.Length);
-
+            
             return MergeSort(copyOfInputArray, 0, inputArray.Length - 1);
         }
 

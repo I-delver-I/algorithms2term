@@ -10,15 +10,15 @@ namespace Labwork_2.MainFlow
     {
         static void Main(string[] args)
         {
-            ValidateProgramRun(args[0]);
+            ValidateProgramRunning(args[0]);
 
-            FileHandler inputFile = new FileHandler(FileHandler.
+            FileRepresentator inputFile = new FileRepresentator(FileRepresentator.
             GetFilePath(args[0]), true);
             System.Console.WriteLine("The content of input file:");
             inputFile.PrintFileContent();
             PrintHorizontalRule();
 
-            int[][] hitParades = ArrayHandler.CreateHitParadesArray(inputFile.Content);
+            int[][] hitParades = ArrayHandler.CreateHitParadesArray(inputFile);
             Console.WriteLine("The hit-parades array:");
             ArrayHandler.PrintSecondDimensionalArray(hitParades);
             PrintHorizontalRule();
@@ -37,7 +37,7 @@ namespace Labwork_2.MainFlow
             ArrayHandler.PrintSecondDimensionalArray(inversionsMatrix);
 
             string outputFilePath = "ip15_pluhatyrov_02_output.txt";
-            FileHandler outputFile = new FileHandler(FileHandler.
+            FileRepresentator outputFile = new FileRepresentator(FileRepresentator.
             GetFilePath(outputFilePath), false);
             List<string> inversionsData = new List<string>();
             
@@ -55,8 +55,8 @@ namespace Labwork_2.MainFlow
         {
             Console.WriteLine(new string('-', 40));
         }
-
-        static void ValidateProgramRun(string inputFileName)
+        
+        static void ValidateProgramRunning(string inputFileName)
         {
             if (inputFileName.Length == 0)
             {

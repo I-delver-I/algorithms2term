@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Labwork_2
 {
@@ -19,12 +18,10 @@ namespace Labwork_2
             }
         }
 
-        public static int[][] CreateHitParadesArray(List<string> hitParades)
+        public static int[][] CreateHitParadesArray(FileRepresentator inputFile)
         {
-            string fileDescription = hitParades[0];
-            int[] userData = hitParades[0].Split(" ").Select(record => Int32.
-            Parse(record)).ToArray();
-            
+            int[] userData = inputFile.Description.Split(" ").
+                Select(num => Int32.Parse(num)).ToArray();
             int usersCount = userData[0];
             int filmsCount = userData[1];
 
@@ -33,21 +30,21 @@ namespace Labwork_2
                 return new int[0][];
             }
 
-            hitParades = hitParades.Where((hitParade, index) => index > 0).ToList();
+            List<string> hitParades = inputFile.Content.Skip(1).ToList();
             int[][] result = new int[usersCount][];
 
             for (var i = 0; i < usersCount; i++)
             {
-                result[i] = ParseHitParadeAndAppend(hitParades[i]);
+                result[i] = ParseHitParadeAndRemoveUserNumber(hitParades[i]);
             }
 
             return result;
         }
 
-        public static int[] ParseHitParadeAndAppend(string rawHitParade)
+        private static int[] ParseHitParadeAndRemoveUserNumber(string hitParade)
         {
-            return rawHitParade.Split(' ').Select(film => Convert.ToInt32(film)).
-            ToArray()[1..];
+            return hitParade.Split(' ').Select(film => Convert.ToInt32(film)).
+                ToArray()[1..];
         }
 
         public static int[][] GetMatrixOfHitParadesSimilarity(int[][] hitParades, int userNumberToCompare)
@@ -59,7 +56,7 @@ namespace Labwork_2
             {
                 if (i != userNumberToCompare - 1)
                 {
-                    hitParadesSimilarityArray.Add(GetSimilarityArray
+                    hitParadesSimilarityArray.Add(GetSimilaritySequence
                     (hitParadeToCompare, hitParades[i]));
                 }
             }
@@ -67,15 +64,15 @@ namespace Labwork_2
             return hitParadesSimilarityArray.ToArray();
         }
 
-        public static int[] GetSimilarityArray(int[] hitParadeToCompare, int[] comparingHitParade)
+        private static int[] GetSimilaritySequence(int[] hitParadeToCompareWith, int[] comparableHitParade)
         {
             List<int> result = new List<int>();
 
-            for (var i = 0; i < hitParadeToCompare.Length; i++)
+            for (var i = 0; i < hitParadeToCompareWith.Length; i++)
             {
-                for (var y = 0; y < comparingHitParade.Length; y++)
+                for (var y = 0; y < comparableHitParade.Length; y++)
                 {
-                    if (hitParadeToCompare[i] == comparingHitParade[y])
+                    if (hitParadeToCompareWith[i] == comparableHitParade[y])
                     {
                         result.Add(y + 1);
                     }
@@ -97,11 +94,11 @@ namespace Labwork_2
                 }
 
                 result.Add(new int[] { userNumber, InvertionsCountAlgorithm.
-                GetInvertionsCount(similarityMatrix[i]) });
+                    GetInvertionsCount(similarityMatrix[i]) });
             }
 
             result = result.OrderBy(invertions => invertions[1]).ToList();
-            result.Insert(0, new int[1] { baseUserNumber });
+            result.Prepend(new int[1] { baseUserNumber });
 
             return result.ToArray();
         }

@@ -6,14 +6,14 @@ using System.Linq;
 
 namespace Labwork_2
 {
-    public class FileHandler
+    public class FileRepresentator
     {
         public string Description { get; set; }
         public string Path { get; }
         public List<string> Content { get; set; }
         public string Name { get; }
 
-        public FileHandler(string path, bool isCreated)
+        public FileRepresentator(string path, bool isCreated)
         {
             Path = path;
             Name = path.Split("\\").Last();
