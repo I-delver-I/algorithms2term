@@ -12,9 +12,10 @@ namespace Labwork_2.MainFlow
             do
             {
                 exceptionIsCaught = false;
+                
                 Console.Write($"Enter the number of user whom hit-parade you want to" +
                     $" compare with others (from 1 to {usersCount}): ");
-
+                
                 try
                 {
                     userNumber = Convert.ToInt32(Console.ReadLine());
@@ -35,7 +36,7 @@ namespace Labwork_2.MainFlow
                     exceptionIsCaught = true;
                 }
             } while (exceptionIsCaught);
-
+            
             return userNumber;
         }
     }
