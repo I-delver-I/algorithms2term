@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Labwork_3.MainFlow
 {
-    public class Validator
+    public class GraphValidator
     {
         public static void ValidateVertex(List<int> graphVertices, int validatableVertex)
         {
@@ -30,7 +30,7 @@ namespace Labwork_3.MainFlow
                 || graphEdges.Any(tuple => tuple.Item1 == validatableEdge.Item2
                 && tuple.Item2 == validatableEdge.Item1))
             {
-                throw new ArgumentException("The edge isn't inside the graph");
+                throw new ArgumentException("The edge is already inside the graph");
             }
         }
     }

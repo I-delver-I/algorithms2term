@@ -5,21 +5,21 @@ namespace Labwork_3
 {
     public class Graph<T> 
     {
+        public Dictionary<T, HashSet<T>> AdjacencyList { get; } = new Dictionary<T, HashSet<T>>();
+
         public Graph() {}
 
         public Graph(IEnumerable<T> vertices, IEnumerable<Tuple<T,T>> edges) {
-            foreach(var vertex in vertices)
+            foreach(T vertex in vertices)
             {
                 AddVertex(vertex);
             }
 
-            foreach(var edge in edges)
+            foreach(Tuple<T, T> edge in edges)
             {
                 AddEdge(edge);
             }
         }
-
-        public Dictionary<T, HashSet<T>> AdjacencyList { get; } = new Dictionary<T, HashSet<T>>();
 
         public void AddVertex(T vertex) 
         {

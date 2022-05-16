@@ -7,14 +7,14 @@ namespace Labwork_3
     {
         public static HashSet<T> DFS<T>(Graph<T> graph, T start, Action<T> preVisit = null) 
         {
-            var visited = new HashSet<T>();
+            HashSet<T> visited = new();
 
             if (!graph.AdjacencyList.ContainsKey(start))
             {
                 return visited;
             }
                 
-            var stack = new Stack<T>();
+            Stack<T> stack = new();
             stack.Push(start);
 
             while (stack.Count > 0) 
@@ -33,7 +33,7 @@ namespace Labwork_3
 
                 visited.Add(vertex);
 
-                foreach(var neighbor in graph.AdjacencyList[vertex])
+                foreach(T neighbor in graph.AdjacencyList[vertex])
                 {
                     if (!visited.Contains(neighbor))
                     {

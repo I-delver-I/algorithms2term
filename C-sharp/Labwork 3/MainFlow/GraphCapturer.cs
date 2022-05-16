@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Labwork_3.MainFlow
 {
-    public class Capturer
+    public class GraphCapturer
     {
         public static List<int> CaptureVertices()
         {
@@ -49,19 +49,19 @@ namespace Labwork_3.MainFlow
                 try
                 {
                     int vertex = int.Parse(Console.ReadLine());
-                    Validator.ValidateVertex(vertex);
+                    GraphValidator.ValidateVertex(vertex);
                     result = Enumerable.Range(1,vertex).ToList();
                 }
                 catch (FormatException)
                 {
                     System.Console.WriteLine("The entered value isn't a number");
-                    System.Console.Write("Try again: ");
+                    System.Console.WriteLine("Try again: ");
                     exceptionIsCaught = true;
                 }
                 catch (ArgumentOutOfRangeException ex)
                 {
                     System.Console.WriteLine(ex.Message);
-                    System.Console.Write("Try again: ");
+                    System.Console.WriteLine("Try again: ");
                     exceptionIsCaught = true;
                 }
             }
@@ -83,7 +83,7 @@ namespace Labwork_3.MainFlow
                     System.Console.Write("Enter the value of vertex whom to add in list: ");
                     int nodeValue = int.Parse(Console.ReadLine());
                     
-                    Validator.ValidateVertex(nodeValue);
+                    GraphValidator.ValidateVertex(result, nodeValue);
 
                     result.Add(nodeValue);
                 }
@@ -102,14 +102,14 @@ namespace Labwork_3.MainFlow
 
                 if (!exceptionIsCaught)
                 {
-                    System.Console.WriteLine("Enter <Esc> to end typing or any key to continue");
+                    System.Console.WriteLine("Enter <Backspace> to end typing or any key to continue");
                 }
-            } while (exceptionIsCaught || Console.ReadKey().Key != ConsoleKey.Escape);
+            } while (exceptionIsCaught || Console.ReadKey().Key != ConsoleKey.Backspace);
 
             return result;
         }
 
-        public static List<Tuple<int, int>> CaptureEdges(List<int> nodes)
+        public static List<Tuple<int, int>> CaptureEdges(List<int> graphVertices)
         {
             List<Tuple<int, int>> result = new();
             bool exceptionIsCaught = true;
@@ -121,14 +121,15 @@ namespace Labwork_3.MainFlow
                 try
                 {
                     System.Console.WriteLine("Enter the first vertex: ");
-                    int firstNode = CaptureVertex();
+                    int firstVertex = CaptureVertex(graphVertices);
 
                     System.Console.WriteLine("Enter the second vertex: ");
-                    int secondNode = CaptureVertex();
+                    int secondVertex = CaptureVertex(graphVertices);
 
-                    Validator.ValidateEdge(result,
-                        new Tuple<int, int>(firstNode, secondNode));
-                    result.Add(new Tuple<int, int>(firstNode,secondNode));
+                    GraphValidator.ValidateEdge(result,
+                        new Tuple<int, int>(firstVertex, secondVertex));
+                    result.Add(new Tuple<int, int>(firstVertex,secondVertex));
+                    ip15_pluhatyrov_03.PrintHorizontalRule(); 
                 }
                 catch (ArgumentException ex)
                 {
@@ -139,14 +140,14 @@ namespace Labwork_3.MainFlow
 
                 if (!exceptionIsCaught)
                 {
-                    System.Console.WriteLine("Enter <Esc> to end typing or any key to continue");
+                    System.Console.WriteLine("Enter <Backspace> to end typing or any key to continue");
                 }
-            } while (exceptionIsCaught || Console.ReadKey().Key != ConsoleKey.Escape);
+            } while (exceptionIsCaught || Console.ReadKey().Key != ConsoleKey.Backspace);
 
             return result;
         }
 
-        private static int CaptureVertex()
+        public static int CaptureVertex(List<int> graphVertices)
         {
             System.Console.Write("Enter the value of vertex that equals at least 1: ");
             int vertex = default;
@@ -159,7 +160,7 @@ namespace Labwork_3.MainFlow
                 try
                 {
                     vertex = int.Parse(Console.ReadLine());
-                    Validator.ValidateVertex(vertex);                    
+                    GraphValidator.ValidateVertex(graphVertices,vertex);
                 }
                 catch (FormatException)
                 {
