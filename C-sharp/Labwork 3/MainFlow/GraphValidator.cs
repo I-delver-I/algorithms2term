@@ -6,7 +6,7 @@ namespace Labwork_3.MainFlow
 {
     public class GraphValidator
     {
-        public static void ValidateVertex(List<int> graphVertices, int validatableVertex)
+        public static void ValidateVertexExistence(List<int> graphVertices, int validatableVertex)
         {
             if (!graphVertices.Contains(validatableVertex))
             {
@@ -14,7 +14,15 @@ namespace Labwork_3.MainFlow
             }
         }
 
-        public static void ValidateVertex(int validatableVertex)
+        public static void ValidateVertexAbsence(List<int> graphVertices, int validatableVertex)
+        {
+            if (graphVertices.Contains(validatableVertex))
+            {
+                throw new ArgumentException($"The vertex {validatableVertex} is inside the graph");
+            }
+        }
+
+        public static void ValidateVertexExistence(int validatableVertex)
         {
             if (validatableVertex <= 0)
             {

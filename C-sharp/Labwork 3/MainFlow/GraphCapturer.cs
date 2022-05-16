@@ -49,7 +49,7 @@ namespace Labwork_3.MainFlow
                 try
                 {
                     int vertex = int.Parse(Console.ReadLine());
-                    GraphValidator.ValidateVertex(vertex);
+                    GraphValidator.ValidateVertexExistence(vertex);
                     result = Enumerable.Range(1,vertex).ToList();
                 }
                 catch (FormatException)
@@ -83,7 +83,7 @@ namespace Labwork_3.MainFlow
                     System.Console.Write("Enter the value of vertex whom to add in list: ");
                     int nodeValue = int.Parse(Console.ReadLine());
                     
-                    GraphValidator.ValidateVertex(result, nodeValue);
+                    GraphValidator.ValidateVertexAbsence(result, nodeValue);
 
                     result.Add(nodeValue);
                 }
@@ -160,7 +160,7 @@ namespace Labwork_3.MainFlow
                 try
                 {
                     vertex = int.Parse(Console.ReadLine());
-                    GraphValidator.ValidateVertex(graphVertices,vertex);
+                    GraphValidator.ValidateVertexExistence(graphVertices,vertex);
                 }
                 catch (FormatException)
                 {
