@@ -20,10 +20,10 @@ namespace Labwork_3.MainFlow
                 switch (Console.ReadLine().Trim())
                 {
                     case "auto":
-                        result = CaptureAutoNodes();
+                        result = CaptureVerticesInRange();
                         break;
                     case "man":
-                        result = CaptureCustomNodes();
+                        result = CaptureCustomVertices();
                         break;
                     default:
                         System.Console.WriteLine("You entered wrong command");
@@ -36,19 +36,21 @@ namespace Labwork_3.MainFlow
             return result;
         }
 
-        private static List<int> CaptureAutoNodes()
+        private static List<int> CaptureVerticesInRange()
         {
             List<int> result = new();
             bool exceptionIsCaught = true;
             
             while (exceptionIsCaught)
             {
-                System.Console.Write("Enter the number whom the maximum node value should equal: ");
+                System.Console.Write("Enter the number whom the maximum vertex value should equal: ");
                 exceptionIsCaught = false;
 
                 try
                 {
-                    result = Enumerable.Range(1,int.Parse(Console.ReadLine())).ToList();
+                    int vertex = int.Parse(Console.ReadLine());
+                    Validator.ValidateVertex(vertex);
+                    result = Enumerable.Range(1,vertex).ToList();
                 }
                 catch (FormatException)
                 {
@@ -67,7 +69,7 @@ namespace Labwork_3.MainFlow
             return result;
         }
 
-        private static List<int> CaptureCustomNodes()
+        private static List<int> CaptureCustomVertices()
         {
             List<int> result = new();
             bool exceptionIsCaught = true;
@@ -78,10 +80,10 @@ namespace Labwork_3.MainFlow
 
                 try
                 {
-                    System.Console.Write("Enter the value of node whom to add in list: ");
+                    System.Console.Write("Enter the value of vertex whom to add in list: ");
                     int nodeValue = int.Parse(Console.ReadLine());
                     
-                    Validator.ValidateNode(nodeValue);
+                    Validator.ValidateVertex(nodeValue);
 
                     result.Add(nodeValue);
                 }
@@ -118,11 +120,11 @@ namespace Labwork_3.MainFlow
 
                 try
                 {
-                    System.Console.Write("Enter the first node: ");
-                    int firstNode = CaptureNode();
+                    System.Console.WriteLine("Enter the first vertex: ");
+                    int firstNode = CaptureVertex();
 
-                    System.Console.Write("Enter the second node: ");
-                    int secondNode = CaptureNode();
+                    System.Console.WriteLine("Enter the second vertex: ");
+                    int secondNode = CaptureVertex();
 
                     Validator.ValidateEdge(result,
                         new Tuple<int, int>(firstNode, secondNode));
@@ -144,10 +146,10 @@ namespace Labwork_3.MainFlow
             return result;
         }
 
-        private static int CaptureNode()
+        private static int CaptureVertex()
         {
-            System.Console.Write("Enter the value of node that equals at least 1: ");
-            int node = default;
+            System.Console.Write("Enter the value of vertex that equals at least 1: ");
+            int vertex = default;
             bool exceptionIsCaught = true;
 
             while (exceptionIsCaught)
@@ -156,8 +158,8 @@ namespace Labwork_3.MainFlow
 
                 try
                 {
-                    node = int.Parse(Console.ReadLine());
-                    Validator.ValidateNode(node);                    
+                    vertex = int.Parse(Console.ReadLine());
+                    Validator.ValidateVertex(vertex);                    
                 }
                 catch (FormatException)
                 {
@@ -173,7 +175,7 @@ namespace Labwork_3.MainFlow
                 }
             }
 
-            return node;
+            return vertex;
         }
     }
 }

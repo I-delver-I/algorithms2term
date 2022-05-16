@@ -14,12 +14,15 @@ namespace Labwork_3.MainFlow
             {
                 System.Console.Write($"{vertex}  ");
             }
+            System.Console.WriteLine(Environment.NewLine);
 
-            Tuple<int, int>[] edges = new[] {Tuple.Create(1,2), Tuple.Create(1,3),
-                Tuple.Create(2,4), Tuple.Create(3,5), Tuple.Create(3,6),
-                Tuple.Create(4,7), Tuple.Create(5,7), Tuple.Create(5,8),
-                Tuple.Create(5,6), Tuple.Create(8,9), Tuple.Create(9,10),
-                };
+            List<Tuple<int, int>> edges = Capturer.CaptureEdges(vertices);
+
+            // Tuple<int, int>[] edges = new[] {Tuple.Create(1,2), Tuple.Create(1,3),
+            //     Tuple.Create(2,4), Tuple.Create(3,5), Tuple.Create(3,6),
+            //     Tuple.Create(4,7), Tuple.Create(5,7), Tuple.Create(5,8),
+            //     Tuple.Create(5,6), Tuple.Create(8,9), Tuple.Create(9,10),
+            //     };
 
             Graph<int> graph = new Graph<int>(vertices, edges);
 
