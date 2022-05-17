@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Labwork_3.MainFlow
+namespace Labwork_3.MainFlow.Capturer
 {
-    public class GraphCapturer
+    public static class VertexCapturer
     {
         public static List<int> CaptureVertices()
         {
@@ -109,44 +109,6 @@ namespace Labwork_3.MainFlow
             return result;
         }
 
-        public static List<Tuple<int, int>> CaptureEdges(List<int> graphVertices)
-        {
-            List<Tuple<int, int>> result = new();
-            bool exceptionIsCaught = true;
-            
-            do
-            {
-                exceptionIsCaught = false;
-
-                try
-                {
-                    System.Console.WriteLine("Enter the first vertex: ");
-                    int firstVertex = CaptureVertex(graphVertices);
-
-                    System.Console.WriteLine("Enter the second vertex: ");
-                    int secondVertex = CaptureVertex(graphVertices);
-
-                    GraphValidator.ValidateEdge(result,
-                        new Tuple<int, int>(firstVertex, secondVertex));
-                    result.Add(new Tuple<int, int>(firstVertex,secondVertex));
-                    ip15_pluhatyrov_03.PrintHorizontalRule(); 
-                }
-                catch (ArgumentException ex)
-                {
-                    System.Console.WriteLine(ex.Message);
-                    System.Console.WriteLine("Try again");
-                    exceptionIsCaught = true;
-                }
-
-                if (!exceptionIsCaught)
-                {
-                    System.Console.WriteLine("Enter <Backspace> to end typing or any key to continue");
-                }
-            } while (exceptionIsCaught || Console.ReadKey().Key != ConsoleKey.Backspace);
-
-            return result;
-        }
-
         public static int CaptureVertex(List<int> graphVertices)
         {
             System.Console.Write("Enter the value of vertex that equals at least 1: ");
@@ -169,6 +131,12 @@ namespace Labwork_3.MainFlow
                     exceptionIsCaught = true;
                 }
                 catch (ArgumentOutOfRangeException ex)
+                {
+                    System.Console.WriteLine(ex.Message);
+                    System.Console.Write("Try again: ");
+                    exceptionIsCaught = true;
+                }
+                catch (ArgumentException ex)
                 {
                     System.Console.WriteLine(ex.Message);
                     System.Console.Write("Try again: ");

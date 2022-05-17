@@ -14,7 +14,7 @@ namespace Labwork_3
             {
                 AddVertex(vertex);
             }
-
+            
             foreach(Tuple<T, T> edge in edges)
             {
                 AddEdge(edge);
