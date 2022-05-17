@@ -21,23 +21,21 @@ namespace Labwork_3
             {
                 T vertex = stack.Pop();
 
-                if (visited.Contains(vertex))
+                if (!visited.Contains(vertex))
                 {
-                    continue;
-                }
-
-                if (preVisit != null)
-                {
-                    preVisit(vertex);
-                }
-
-                visited.Add(vertex);
-
-                foreach(T neighbor in graph.AdjacencyList[vertex])
-                {
-                    if (!visited.Contains(neighbor))
+                    if (preVisit != null)
                     {
-                        stack.Push(neighbor);
+                        preVisit(vertex);
+                    }
+
+                    visited.Add(vertex);
+
+                    foreach(T neighbor in graph.AdjacencyList[vertex])
+                    {
+                        if (!visited.Contains(neighbor))
+                        {
+                            stack.Push(neighbor);
+                        }
                     }
                 }
             }
