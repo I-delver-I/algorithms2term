@@ -4,8 +4,8 @@ namespace Labwork_5
 {
     public class DoublyTierList<T> : IEnumerable<T>
     {
-        private DoubleTierNode<T>? _head;
-        private DoubleTierNode<T>? _tail;
+        private DoubleTierNode<T> _head;
+        private DoubleTierNode<T> _tail;
         private int _count;
         public int Count { get => _count; }
         public bool IsEmpty { get => _count == 0; }
@@ -13,7 +13,7 @@ namespace Labwork_5
         public void Add(T data)
         {
             ip15_pluhatyrov_05.ValidateData(data);
-            DoubleTierNode<T>? node = new DoubleTierNode<T>(data);
+            DoubleTierNode<T> node = new DoubleTierNode<T>(data);
  
             if (_head == null)
             {
@@ -32,8 +32,8 @@ namespace Labwork_5
         public void AddFirst(T data)
         {
 
-            DoubleTierNode<T>? node = new DoubleTierNode<T>(data);
-            DoubleTierNode<T>? tempNode = _head;
+            DoubleTierNode<T> node = new DoubleTierNode<T>(data);
+            DoubleTierNode<T> tempNode = _head;
             node.Next = tempNode;
             _head = node;
 
@@ -51,7 +51,7 @@ namespace Labwork_5
         
         public bool Remove(T data)
         {
-            DoubleTierNode<T>? current = _head;
+            DoubleTierNode<T> current = _head;
  
             while (current != null && !current.Data.Equals(data))
             {
@@ -95,7 +95,7 @@ namespace Labwork_5
  
         public bool Contains(T data)
         {
-            DoubleTierNode<T>? currentNode = _head;
+            DoubleTierNode<T> currentNode = _head;
 
             while (currentNode != null)
             {
@@ -117,7 +117,7 @@ namespace Labwork_5
  
         IEnumerator<T> IEnumerable<T>.GetEnumerator()
         {
-            DoubleTierNode<T>? currentNode = _head;
+            DoubleTierNode<T> currentNode = _head;
 
             while (currentNode != null)
             {
@@ -128,7 +128,7 @@ namespace Labwork_5
  
         public IEnumerable<T> BackEnumerator()
         {
-            DoubleTierNode<T>? currentNode = _tail;
+            DoubleTierNode<T> currentNode = _tail;
 
             while (currentNode != null)
             {

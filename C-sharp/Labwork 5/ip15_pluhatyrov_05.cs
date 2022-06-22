@@ -30,7 +30,7 @@
 
             i = doubleTierList.Count;
             System.Console.WriteLine("Words on odd places of the double-tier list in reverse:");
-            foreach (string? data in doubleTierList.BackEnumerator())
+            foreach (string data in doubleTierList.BackEnumerator())
             {
                 if ((i & 1) == 1)
                 {
@@ -71,7 +71,7 @@
             return result;
         }
 
-        public static void ValidateData(object? data)
+        public static void ValidateData(object data)
         {
             if (data is string stringData && stringData == string.Empty)
             {
